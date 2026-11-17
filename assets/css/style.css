@@ -57,7 +57,7 @@ h3{font-size:1.7rem}
 .btn svg{width:16px;height:16px}
 
 /* promo bar */
-.promo-bar{background:var(--plum-900);color:var(--blush);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:.65rem 1rem}
+.promo-bar{background:var(--plum-900);color:var(--blush);font-size:.74rem;line-height:1.5;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:.7rem 1rem}
 .promo-bar a{color:var(--rose-light);border-bottom:1px solid var(--rose-gold);margin-left:.5rem}
 
 /* header */
@@ -93,10 +93,12 @@ h3{font-size:1.7rem}
 .hero-meta div{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#cfaea2}
 .hero-meta strong{display:block;font-family:var(--serif);font-size:1.9rem;letter-spacing:0;text-transform:none;color:var(--paper);font-weight:500}
 .hero-visual{position:relative;justify-self:center}
-.hero-logo{width:min(440px,80vw);border-radius:50%;box-shadow:0 0 0 1px rgba(232,190,167,.3),0 0 0 18px rgba(232,190,167,.05),0 40px 90px -20px rgba(0,0,0,.7);animation:float 7s ease-in-out infinite}
+.hero-logo{width:min(440px,80vw);height:auto;border-radius:50%;box-shadow:0 0 0 1px rgba(232,190,167,.3),0 0 0 18px rgba(232,190,167,.05),0 40px 90px -20px rgba(0,0,0,.7);animation:float 7s ease-in-out infinite}
 .hero-ring{position:absolute;inset:-34px;border:1px dashed rgba(232,190,167,.35);border-radius:50%;animation:spin 60s linear infinite}
 .hero-badge{position:absolute;bottom:6%;left:-10%;background:var(--paper);color:var(--plum-900);padding:1rem 1.3rem;border-radius:14px;box-shadow:var(--shadow);font-size:.75rem;letter-spacing:.08em;max-width:220px}
-.hero-badge strong{font-family:var(--serif);font-size:1.3rem;display:block;letter-spacing:0;color:var(--rose)}
+.hero-badge strong{font-family:var(--serif);font-size:1.3rem;display:flex;align-items:center;gap:.4rem;letter-spacing:0;color:var(--rose)}
+.cross{width:.85em;height:.85em;display:inline-block;vertical-align:-.1em;color:var(--rose)}
+.ico .cross{width:1em;height:1em;color:inherit}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 
@@ -283,7 +285,8 @@ textarea{min-height:130px;resize:vertical}
 .foot-bottom a{color:var(--rose-light)}
 
 /* floating book button (mobile) */
-.float-book{position:fixed;right:1rem;bottom:1rem;z-index:60;display:none;box-shadow:0 14px 30px -10px rgba(0,0,0,.5)}
+.float-book{position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom));z-index:60;display:none;box-shadow:0 14px 30px -10px rgba(0,0,0,.5);opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .35s ease,transform .35s ease}
+.float-book.show{opacity:1;transform:none;pointer-events:auto}
 
 /* reveal */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s ease}
@@ -304,15 +307,20 @@ textarea{min-height:130px;resize:vertical}
   .menu-open .nav-links{transform:none}
   .menu-toggle{display:block}
   .hero-grid,.split,.promo,.contact-grid{grid-template-columns:1fr}
-  .hero{padding:4rem 0 5rem}
-  .hero-visual{order:-1}
-  .hero-logo{width:min(300px,70vw)}
-  .hero-badge{position:relative;left:auto;bottom:auto;margin:1.6rem auto 0;text-align:center}
+  .hero{padding:3rem 0 4rem}
+  .hero-grid{gap:3rem;text-align:center}
+  .hero .eyebrow{justify-content:center}
+  .hero-ctas{justify-content:center}
+  .hero-meta{justify-content:center}
+  .hero-logo{width:min(230px,60vw)}
+  .hero-ring{inset:-22px}
+  .hero-badge{position:relative;left:auto;bottom:auto;margin:1.8rem auto 0;text-align:center;max-width:260px}
+  .hero-badge strong{justify-content:center}
   .promo-bar{font-size:.64rem;letter-spacing:.08em}
   .hide-sm{display:none}
   .split{gap:3rem}
   .promo{padding:2.6rem 1.6rem}
-  .float-book{display:inline-flex}
+  .float-book{display:inline-flex;padding:.85rem 1.5rem;font-size:.72rem}
 }
 @media (max-width:640px){
   section{padding:4.5rem 0}
@@ -324,5 +332,10 @@ textarea{min-height:130px;resize:vertical}
   form.card-form,.contact-card{padding:1.8rem}
   .book-frame iframe{height:760px}
   .hero-meta{gap:1.4rem}
+  .eyebrow{letter-spacing:.2em;font-size:.66rem}
+  .eyebrow::before{width:20px}
+  .hero .eyebrow::before{display:none}
+  .hero-ctas .btn{width:100%;justify-content:center}
+  .promo-bar{padding:.6rem .8rem}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
