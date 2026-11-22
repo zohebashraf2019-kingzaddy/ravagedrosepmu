@@ -11,7 +11,27 @@
   document.querySelectorAll("[data-phone]").forEach((el) => {
     el.href = "tel:" + C.PHONE_RAW; if (!el.children.length && !el.textContent.trim()) el.textContent = C.PHONE;
   });
-  document.querySelectorAll("[data-book-frame]").forEach((f) => { f.src = C.BOOKING_URL; });
+  /* Booking: the calendar and booking links stay locked until the client
+     checks the Terms & Booking Policies acknowledgment box. */
+  const ack = document.querySelector("#booking-ack");
+  const frames = document.querySelectorAll("[data-book-frame]");
+  if (!ack) frames.forEach((f) => { f.src = C.BOOKING_URL; });
+  else {
+    const box = document.querySelector("#ack-box");
+    const setAck = () => {
+      document.body.classList.toggle("ack-ok", ack.checked);
+      if (ack.checked) frames.forEach((f) => { if (!f.getAttribute("src")) f.src = C.BOOKING_URL; });
+    };
+    ack.checked = false; setAck();
+    ack.addEventListener("change", setAck);
+    document.querySelectorAll("[data-gate]").forEach((a) => a.addEventListener("click", (e) => {
+      if (ack.checked) return;
+      e.preventDefault();
+      box.scrollIntoView({ behavior: "smooth", block: "center" });
+      box.classList.remove("nudge"); void box.offsetWidth; box.classList.add("nudge");
+      setTimeout(() => ack.focus({ preventScroll: true }), 400);
+    }));
+  }
 
   /* Year */
   document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
@@ -109,4 +129,30 @@
       ok.style.display = "block";
     });
   }
+
+  /* FAQ: search + jump chips open their group */
+  const search = document.querySelector("#faq-search");
+  if (search) {
+    const groups = [...document.querySelectorAll(".faq-group")];
+    const empty = document.querySelector(".faq-empty");
+    search.addEventListener("input", () => {
+      const q = search.value.trim().toLowerCase();
+      let hits = 0;
+      groups.forEach((g) => {
+        let gh = 0;
+        g.querySelectorAll(".faq-q").forEach((d) => {
+          const m = !q || d.textContent.toLowerCase().includes(q);
+          d.hidden = !m; if (m) gh++;
+          d.open = !!q && m && q.length > 2 && gh <= 3;
+        });
+        g.hidden = gh === 0; g.open = !!q && gh > 0; hits += gh;
+      });
+      empty.hidden = hits > 0;
+    });
+  }
+  document.querySelectorAll(".faq-chips a").forEach((a) => a.addEventListener("click", () => {
+    const g = document.querySelector(a.getAttribute("href"));
+    if (g) g.open = true;
+  }));
+  if (location.hash) { const g = document.querySelector(location.hash + ".faq-group"); if (g) g.open = true; }
 })();

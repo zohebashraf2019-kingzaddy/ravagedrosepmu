@@ -2,7 +2,7 @@
    RAVAGED ROSE BEAUTY — SITE SETTINGS
    Change links here once and they update across the whole site.
    BOOKING_URL is TEMPORARY (GlossGenius) — swap for the
-   permanent booking/deposit system when it's ready.
+   permanent booking/booking-fee system when it's ready.
    ============================================================ */
 window.RRB = {
   BOOKING_URL: "https://ravagedrosepmu.glossgenius.com/book",

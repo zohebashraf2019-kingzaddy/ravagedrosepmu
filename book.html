@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Book an Appointment | Ravaged Rose Beauty — Sparks, NV</title>
-<meta name="description" content="Book permanent makeup online and secure your appointment with a deposit. Affirm, Afterpay and Klarna available.">
+<meta name="description" content="Book permanent makeup online and secure your appointment with a nonrefundable booking fee. Affirm, Afterpay and Klarna available.">
 <meta name="theme-color" content="#21141a">
 <meta property="og:title" content="Book an Appointment | Ravaged Rose Beauty — Sparks, NV">
-<meta property="og:description" content="Book permanent makeup online and secure your appointment with a deposit. Affirm, Afterpay and Klarna available.">
+<meta property="og:description" content="Book permanent makeup online and secure your appointment with a nonrefundable booking fee. Affirm, Afterpay and Klarna available.">
 <meta property="og:image" content="/assets/img/logo.png">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" href="/assets/img/favicon.png">
@@ -41,22 +41,35 @@
 
 <section class="page-hero">
   <div class="container reveal">
-    <span class="eyebrow">Book &amp; deposits</span>
+    <span class="eyebrow">Book online</span>
     <h1>Reserve your <span class="script" style="color:var(--rose-light)">chair</span></h1>
-    <p class="lead">Choose your service, pick a time and secure your appointment with a deposit — all online.</p>
-    <div class="hero-ctas" style="justify-content:center;margin-top:2rem"><a class="btn btn-gold" data-link="BOOKING_URL" href="#">Open booking site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost" data-link="GIFT_CARD_URL" href="#">Buy a gift card</a></div>
+    <p class="lead">Choose your service, pick a time and secure your appointment with a nonrefundable booking fee — all online.</p>
+    <div class="hero-ctas" style="justify-content:center;margin-top:2rem"><a class="btn btn-gold" data-link="BOOKING_URL" data-gate href="#">Open booking site <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn btn-ghost" data-link="GIFT_CARD_URL" href="#">Buy a gift card</a></div>
   </div>
 </section>
 <section>
   <div class="container book-wrap">
-    <div class="book-frame reveal">
-      <div class="book-frame-top"><span>🌹 Secure online booking</span><a data-link="BOOKING_URL" href="#">Open in a new tab ↗</a></div>
-      <p class="form-note" style="padding:.8rem 1.4rem;margin:0;background:var(--blush)">Calendar not showing? Tap <a data-link="BOOKING_URL" href="#" style="color:var(--rose);border-bottom:1px solid">Open booking site</a> to book &amp; pay your deposit.</p>
-      <iframe data-book-frame title="Book an appointment with Ravaged Rose Beauty" loading="lazy" allow="payment"></iframe>
+    <div class="book-frame reveal" id="booking">
+      <div class="book-frame-top"><span>🌹 Secure online booking</span><a data-link="BOOKING_URL" data-gate href="#">Open in a new tab ↗</a></div>
+      <div class="ack-box" id="ack-box">
+        <label class="ack">
+          <input type="checkbox" id="booking-ack" required aria-describedby="ack-help">
+          <span class="ack-mark" aria-hidden="true"></span>
+          <span class="ack-text">I have read and agree to the <a href="/terms" target="_blank" rel="noopener">Terms &amp; Conditions</a> and <a href="/policies" target="_blank" rel="noopener">Booking &amp; Studio Policies</a>, including the nonrefundable booking fee and 48-hour cancellation policy.</span>
+        </label>
+        <p class="ack-help" id="ack-help"><span class="ack-off">Please check the box above to unlock the booking calendar.</span><span class="ack-on">Thank you! Choose your service and time below. Calendar not showing? <a data-link="BOOKING_URL" data-gate href="#">Open the booking site</a>.</span></p>
+      </div>
+      <div class="book-stage">
+        <iframe data-book-frame title="Book an appointment with Ravaged Rose Beauty" allow="payment"></iframe>
+        <div class="book-lock" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>
+          <p>Agree to the terms above to open the booking calendar</p>
+        </div>
+      </div>
     </div>
     <aside class="book-side">
       <div class="side-box reveal">
-        <h3>Deposits</h3>
+        <h3>Booking Fees</h3>
         <table class="deposit-table">
           <tr><td>Powder Brows</td><td>$50</td></tr>
           <tr><td>Lip Blush</td><td>$50</td></tr>
@@ -64,7 +77,7 @@
           <tr><td>Saline Removal</td><td>$50</td></tr>
           <tr><td>Tiny Tattoos</td><td>$20</td></tr>
         </table>
-        <p class="form-note" style="margin-top:.8rem">Required for new clients to secure your appointment and applied to your service total.</p>
+        <p class="form-note" style="margin-top:.8rem">Nonrefundable booking fee required for new clients to secure your appointment. Your booking fee is applied toward your service total.</p>
       </div>
       <div class="side-box reveal">
         <h3>Before you book</h3>
@@ -72,9 +85,10 @@
           <li>Consultation required for Dark Lip Neutralization ($35, applied to your balance) and Saline Removal.</li>
           <li>Touch ups are for existing clients — discounted within 2 years of your original service.</li>
           <li>Using Affirm, Afterpay or Klarna? Get pre-approved first; promo pricing can't be combined.</li>
-          <li>Need to reschedule? Please give at least 48 hours' notice.</li>
+          <li>Need to reschedule? Give at least 48 hours' notice — one complimentary reschedule per booking fee.</li>
+          <li><span>Complete the <a href="/forms" style="color:var(--rose);border-bottom:1px solid">intake form</a> for your service and bring a valid photo ID.</span></li>
         </ul>
-        <a href="/faq#policies" class="btn btn-outline" style="margin-top:1.2rem;width:100%;justify-content:center">Read policies</a>
+        <a href="/policies" class="btn btn-outline" style="margin-top:1.2rem;width:100%;justify-content:center">Booking &amp; Studio Policies</a>
       </div>
       <div class="side-box reveal">
         <h3>Questions first?</h3>
@@ -88,10 +102,11 @@
   <div class="container">
     <div class="section-head center reveal"><span class="eyebrow">Cancellation policy</span><h2>Life happens — we get it</h2></div>
     <div class="cards-3">
-      <div class="info-card reveal"><span class="ico">⏰</span><h3>48-hour notice</h3><p>Please cancel or reschedule at least 48 hours before your scheduled appointment.</p></div>
-      <div class="info-card reveal d1"><span class="ico">✦</span><h3>Late cancellations</h3><p>Cancellations with less than 48 hours' notice incur a fee of 30% of the scheduled service total.</p></div>
-      <div class="info-card reveal d2"><span class="ico">🌹</span><h3>Your agreement</h3><p>By booking, you acknowledge and agree to this policy. Thank you for respecting our time!</p></div>
+      <div class="info-card reveal"><span class="ico">⏰</span><h3>48-hour notice</h3><p>All cancellations and rescheduling requests must be submitted at least 48 hours before your scheduled appointment.</p></div>
+      <div class="info-card reveal d1"><span class="ico">✦</span><h3>One complimentary reschedule</h3><p>With at least 48 hours' notice, your booking fee transfers to one rescheduled appointment. Further changes require a new booking fee.</p></div>
+      <div class="info-card reveal d2"><span class="ico">🌹</span><h3>Late cancellations &amp; no-shows</h3><p>Cancellations or reschedules with less than 48 hours' notice, and missed appointments, forfeit the nonrefundable booking fee.</p></div>
     </div>
+    <p class="center reveal" style="margin-top:2.2rem"><a class="btn btn-outline" href="/policies">Read the full Booking &amp; Studio Policies</a></p>
   </div>
 </section>
 </main>
@@ -110,10 +125,10 @@
       <h4>Explore</h4>
       <ul>
         <li><a href="/services">Services &amp; Pricing</a></li>
-        <li><a href="/book">Book &amp; Deposits</a></li>
+        <li><a href="/book">Book Online</a></li>
         <li><a href="/about">Meet Destiny</a></li>
         <li><a href="/faq">FAQ &amp; Aftercare</a></li>
-        <li><a href="/faq#policies">Policies</a></li>
+        <li><a href="/forms">Client Forms</a></li>
         <li><a data-link="GIFT_CARD_URL" href="#">Gift Cards</a></li>
       </ul>
     </div>
@@ -137,6 +152,7 @@
   </div>
   <div class="container foot-bottom">
     <span>© <span data-year>2026</span> Ravaged Rose Beauty · Women-owned · Sparks, NV</span>
+    <nav class="foot-legal" aria-label="Legal"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms &amp; Conditions</a><a href="/policies">Booking &amp; Studio Policies</a></nav>
     <span>Website by <a href="https://www.nexoradigital.live" target="_blank" rel="noopener">Nexora Digital</a></span>
   </div>
 </footer>
