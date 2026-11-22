@@ -9,7 +9,7 @@ Built by [Nexora Digital](https://www.nexoradigital.live). Plain HTML/CSS/JS —
 |---|---|
 | Home | `index.html` |
 | Services & pricing (filterable) | `services.html` |
-| Book online (terms acknowledgment checkbox → embedded booking, booking-fee table, policy summary) | `book.html` |
+| Book online (terms acknowledgment checkbox → unlocks link to GlossGenius booking, booking-fee table, policy summary) | `book.html` |
 | About Destiny | `about.html` |
 | FAQ (top 5 questions + expandable topic sections + search), aftercare, policy links | `faq.html` |
 | Client Forms (intake, photo release, results acknowledgment, aftercare PDFs) | `forms.html` → `assets/forms/` |
@@ -30,7 +30,7 @@ All booking/social/phone links come from **`assets/js/config.js`**:
 - `assets/video/` — four Instagram reels, compressed for web
 
 ## Booking acknowledgment
-On `/book` the calendar stays locked until the client checks:
+On `/book` the booking button stays locked until the client checks:
 > I have read and agree to the Terms & Conditions and Booking & Studio Policies, including the nonrefundable booking fee and 48-hour cancellation policy.
 
 Terminology: always "booking fee" (nonrefundable, applied toward the service total) — never "deposit".

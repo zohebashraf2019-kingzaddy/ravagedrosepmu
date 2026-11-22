@@ -389,7 +389,17 @@ textarea{min-height:130px;resize:vertical}
 .ack-ok .ack-box{background:#f6ece6}
 .ack-box.nudge{animation:nudge .5s ease}
 @keyframes nudge{0%,100%{transform:none}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
-.book-stage{position:relative}
+.book-stage{position:relative;min-height:520px}
+.book-go{padding:2.6rem 2.4rem 2.8rem;display:grid;gap:1.1rem;justify-items:start}
+.go-badge{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--rose);border:1px solid var(--line);border-radius:999px;padding:.3rem .7rem}
+.book-go h3{font-size:clamp(1.8rem,3vw,2.3rem)}
+.book-go>p{color:#644d56;max-width:52ch}
+.go-steps{list-style:none;counter-reset:go;display:grid;gap:.9rem;margin:.4rem 0 .6rem;width:100%}
+.go-steps li{counter-increment:go;display:flex;gap:1rem;align-items:flex-start;font-size:.92rem;color:#644d56;padding:1rem 1.1rem;background:var(--cream);border:1px solid var(--line);border-radius:14px}
+.go-steps li::before{content:counter(go);flex:none;width:30px;height:30px;border-radius:50%;background:var(--grad-gold);color:var(--plum-900);display:grid;place-items:center;font-family:var(--serif);font-size:1.1rem;font-weight:600}
+.go-steps b{color:var(--plum-900)}
+.go-btn{font-size:.82rem;padding:1.15rem 2rem}
+.go-note{font-size:.76rem;color:var(--muted)}
 .book-lock{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:1rem;text-align:center;padding:2rem;background:linear-gradient(180deg,rgba(250,243,238,.97),rgba(243,223,211,.97));color:var(--plum-700);transition:opacity .4s}
 .book-lock svg{width:46px;height:46px;color:var(--rose)}
 .book-lock p{font-family:var(--serif);font-size:1.5rem;max-width:22ch}
@@ -454,6 +464,8 @@ body:not(.ack-ok) [data-gate]{opacity:.55}
   .float-book{display:inline-flex;padding:.85rem 1.5rem;font-size:.72rem}
 }
 @media (max-width:640px){
+  .book-go{padding:1.8rem 1.3rem 2rem}
+  .go-btn{width:100%}
   .btn{white-space:normal;text-align:center;justify-content:center;line-height:1.4}
   .cards-4,.form-grid,.legal-toc ol{grid-template-columns:1fr}
   .faq-top-item summary{font-size:1.3rem}
