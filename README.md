@@ -34,3 +34,17 @@ On `/book` the booking button stays locked until the client checks:
 > I have read and agree to the Terms & Conditions and Booking & Studio Policies, including the nonrefundable booking fee and 48-hour cancellation policy.
 
 Terminology: always "booking fee" (nonrefundable, applied toward the service total) — never "deposit".
+
+## Online client forms (`/form?f=<form-id>`)
+Clients fill out and e-sign forms on `/form`; submissions are emailed to the studio by the
+Vercel function `api/submit-form.js` using [Resend](https://resend.com). Nothing is stored on the site.
+Questions live in `assets/js/forms-data.js` (shared by the page and the email function).
+
+Vercel → Settings → Environment Variables:
+| Name | Value |
+|---|---|
+| `RESEND_API_KEY` | API key from resend.com |
+| `FORMS_TO_EMAIL` | inbox that receives forms (comma-separate for several) |
+| `FORMS_FROM_EMAIL` | optional, e.g. `Ravaged Rose Forms <forms@yourdomain.com>` once a domain is verified in Resend |
+
+Until the key is set, submitting shows "Online forms are not connected yet" and nothing is sent.
